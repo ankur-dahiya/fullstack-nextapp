@@ -2,6 +2,7 @@ import Image from 'next/image'
 import styles from './homepage.module.css'
 
 export default function Home() {
+  console.log("client side provider test"); //this is a server side component that a client component is using...but it'll not become a client component so we shouldn't see this in console on client side
   return (
     <div className={styles.container}>
       <div className={styles.textContainer}>

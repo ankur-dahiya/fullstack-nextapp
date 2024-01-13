@@ -3,6 +3,7 @@ import Image from "next/image";
 import styles from "./links.module.css";
 import NavLink from './navLink/NavLink';
 import { useState } from 'react';
+import { handleLogout } from "@/lib/actions";
 
 const links = [
     {
@@ -22,21 +23,24 @@ const links = [
         path: "/blog",
     },
 ];
-function Links() {
+function Links({session}) {
+    // we cannot use async because its client side component so we'll pass session as prop
     const [open,setOpen] = useState(false);
     // temporary
-    const isAdmin = true;
-    const session = true;
+    // const isAdmin = true;
+    // const session = true;
   return (
     <div className={styles.container}>
     <div className={styles.links}>{links.map((link=>(
         <NavLink item={link} key={link.title}></NavLink>
     )))}
     {
-        session ? (
+        session?.user ? (
             <>
-            {isAdmin && <NavLink item={{title: "Admin" , path: "/admin"}}></NavLink>}
+            {session?.user.isAdmin && <NavLink item={{title: "Admin" , path: "/admin"}}></NavLink>}
+            <form action={handleLogout}>
             <button className={styles.logout}>Logout</button>
+            </form>
             </>
         ) :
         (

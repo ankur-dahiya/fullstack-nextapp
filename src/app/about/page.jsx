@@ -1,6 +1,12 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 
+export const metadata = {
+    title: 'About Page',
+    description: 'About Page description',
+  }  
+
+
 const AboutPage = () => {
     return (
         <div className={styles.container}>
@@ -34,6 +40,7 @@ const AboutPage = () => {
                     className={styles.img}
                 />
             </div>
+            
 
         </div>
     )

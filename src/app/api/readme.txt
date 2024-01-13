@@ -1,0 +1,1 @@
+folder named api inside app folder indicate to next.js that this folder contains the api route instead of pages to show at client side(name should be exactly route.js)
